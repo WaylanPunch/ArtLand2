@@ -4,7 +4,7 @@ import com.artland.config.Constants;
 import com.artland.entity.Blog;
 import com.artland.service.BlogService;
 import com.artland.service.CategoryService;
-import com.artland.util.MyBlogUtils;
+import com.artland.util.ArtLandUtils;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.Result;
 import com.artland.util.ResultGenerator;
@@ -196,7 +196,7 @@ public class BlogController {
 		String newFileName = tempName.toString();
 		//创建文件
 		File destFile = new File(Constants.FILE_UPLOAD_DIC + newFileName);
-		String fileUrl = MyBlogUtils.getHost(new URI(request.getRequestURL() + "")) + "/upload/" + newFileName;
+		String fileUrl = ArtLandUtils.getHost(new URI(request.getRequestURL() + "")) + "/upload/" + newFileName;
 		File fileDirectory = new File(Constants.FILE_UPLOAD_DIC);
 		try {
 			if (!fileDirectory.exists()) {

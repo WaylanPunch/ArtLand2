@@ -258,12 +258,12 @@ public class ArtLandController {
 		}
 		BlogComment comment = new BlogComment();
 		comment.setBlogId(blogId);
-		comment.setCommentator(MyBlogUtils.cleanString(commentator));
+		comment.setCommentator(ArtLandUtils.cleanString(commentator));
 		comment.setEmail(email);
 		if (PatternUtil.isURL(websiteUrl)) {
 			comment.setWebsiteUrl(websiteUrl);
 		}
-		comment.setCommentBody(MyBlogUtils.cleanString(commentBody));
+		comment.setCommentBody(ArtLandUtils.cleanString(commentBody));
 		return ResultGenerator.genSuccessResult(commentService.addComment(comment));
 	}
 

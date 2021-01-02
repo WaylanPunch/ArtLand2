@@ -1,7 +1,7 @@
 package com.artland.controller.admin;
 
 import com.artland.config.Constants;
-import com.artland.util.MyBlogUtils;
+import com.artland.util.ArtLandUtils;
 import com.artland.util.Result;
 import com.artland.util.ResultGenerator;
 import org.springframework.stereotype.Controller;
@@ -52,7 +52,7 @@ public class UploadController {
 			}
 			file.transferTo(destFile);
 			Result resultSuccess = ResultGenerator.genSuccessResult();
-			resultSuccess.setData(MyBlogUtils.getHost(new URI(httpServletRequest.getRequestURL() + "")) + "/upload/" + newFileName);
+			resultSuccess.setData(ArtLandUtils.getHost(new URI(httpServletRequest.getRequestURL() + "")) + "/upload/" + newFileName);
 			return resultSuccess;
 		} catch (IOException e) {
 			e.printStackTrace();

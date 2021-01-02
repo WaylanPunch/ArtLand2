@@ -6,28 +6,33 @@ USE `artland_db`;
 DROP TABLE IF EXISTS `tb_media`;
 
 CREATE TABLE `tb_media` (
-  `media_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'media表主键id',
-  `media_title` varchar(256) NOT NULL COMMENT 'media标题',
-  `media_sub_url` varchar(256) NOT NULL COMMENT 'media自定义路径url',
-  `media_cover_image` varchar(256) NOT NULL COMMENT 'media封面图',
-  `media_description` varchar(512) NOT NULL COMMENT 'media描述',
-  `media_content` varchar(1024) NOT NULL COMMENT 'media内容',
-  `media_dimension` varchar(12) NOT NULL COMMENT 'media尺寸',
-  `media_resolution` varchar(12) NOT NULL COMMENT 'media分辨率',
-  `media_format` varchar(12) NOT NULL COMMENT 'media格式',
-  `media_duration` varchar(12) NOT NULL COMMENT 'media时长',
-  `media_license` varchar(512) NOT NULL COMMENT 'media证书',
-  `media_category_id` int(11) NOT NULL COMMENT 'media分类id',
-  `media_category_name` varchar(50) NOT NULL COMMENT 'media分类(冗余字段)',
-  `media_tags` varchar(200) NOT NULL COMMENT 'media标签',
-  `media_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-草稿 1-发布',
-  `media_views` bigint(20) NOT NULL DEFAULT '0' COMMENT '阅读量',
-  `enable_comment` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-允许评论 1-不允许评论',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否删除 0=否 1=是',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
-  PRIMARY KEY (`media_id`)
+                            `media_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'media表主键id',
+                            `media_title` varchar(256) NOT NULL COMMENT 'media标题',
+                            `media_sub_url` varchar(256) NOT NULL COMMENT 'media自定义路径url',
+                            `media_cover_image` varchar(256) NOT NULL COMMENT 'media封面图',
+                            `media_description` varchar(512) NOT NULL COMMENT 'media描述',
+                            `media_content` varchar(1024) NOT NULL COMMENT 'media内容',
+                            `media_dimension` varchar(12) NOT NULL COMMENT 'media尺寸',
+                            `media_resolution` varchar(12) NOT NULL COMMENT 'media分辨率',
+                            `media_format` varchar(12) NOT NULL COMMENT 'media格式',
+                            `media_duration` varchar(12) NOT NULL COMMENT 'media时长',
+                            `media_license` varchar(512) NOT NULL COMMENT 'media证书',
+                            `media_status` tinyint NOT NULL DEFAULT '0' COMMENT '0-草稿 1-发布',
+                            `media_price` decimal(8,2) DEFAULT NULL COMMENT 'media价格',
+                            `media_purchases` bigint DEFAULT NULL COMMENT '购买次数',
+                            `media_views` bigint NOT NULL DEFAULT '0' COMMENT '阅读量',
+                            `media_downloads` bigint DEFAULT NULL COMMENT '下载次数',
+                            `media_category_id` int NOT NULL COMMENT 'media分类id',
+                            `media_category_name` varchar(50) NOT NULL COMMENT 'media分类(冗余字段)',
+                            `media_tags` varchar(200) NOT NULL COMMENT 'media标签',
+                            `media_user_id` int DEFAULT NULL,
+                            `enable_comment` tinyint NOT NULL DEFAULT '0' COMMENT '0-允许评论 1-不允许评论',
+                            `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT '是否删除 0=否 1=是',
+                            `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+                            `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+                            PRIMARY KEY (`media_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 /*Table structure for table `tb_media_category` */
 
