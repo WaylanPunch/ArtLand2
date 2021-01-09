@@ -1,6 +1,6 @@
 package com.artland.service;
 
-import com.artland.entity.AdminUser;
+import com.artland.entity.User;
 
 /**
  * @author WaylanPunch
@@ -10,7 +10,7 @@ import com.artland.entity.AdminUser;
  */
 public interface AdminUserService {
 
-	AdminUser login(String userName, String password);
+	User login(String userName, String password);
 
 	/**
 	 * 获取用户信息
@@ -18,7 +18,7 @@ public interface AdminUserService {
 	 * @param loginUserId
 	 * @return
 	 */
-	AdminUser getUserDetailById(Integer loginUserId);
+	User getUserDetailById(Integer loginUserId);
 
 	/**
 	 * 修改当前登录用户的密码

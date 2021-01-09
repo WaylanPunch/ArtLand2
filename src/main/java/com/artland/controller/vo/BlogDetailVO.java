@@ -10,92 +10,95 @@ import java.util.List;
  * @date 2017-10-31
  */
 public class BlogDetailVO {
-	private Long blogId;
 
-	private String blogTitle;
+	private Long id;
 
-	private Integer blogCategoryId;
+	private String title;
+
+	private Integer categoryId;
 
 	private Integer commentCount;
 
-	private String blogCategoryIcon;
+	private String categoryIcon;
 
-	private String blogCategoryName;
+	private String categoryName;
 
-	private String blogCoverImage;
+	private String coverImage;
 
-	private Long blogViews;
+	private Long views;
 
-	private List<String> blogTags;
+	private List<String> tags;
 
-	private String blogContent;
+	private String content;
 
 	private Byte enableComment;
 
 	private Date createTime;
 
-	public Long getBlogId() {
-		return blogId;
+	private Integer userId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setBlogId(Long blogId) {
-		this.blogId = blogId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getBlogTitle() {
-		return blogTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setBlogTitle(String blogTitle) {
-		this.blogTitle = blogTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public Integer getBlogCategoryId() {
-		return blogCategoryId;
+	public Integer getCategoryId() {
+		return categoryId;
 	}
 
-	public void setBlogCategoryId(Integer blogCategoryId) {
-		this.blogCategoryId = blogCategoryId;
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
-	public String getBlogCategoryIcon() {
-		return blogCategoryIcon;
+	public String getCategoryIcon() {
+		return categoryIcon;
 	}
 
-	public void setBlogCategoryIcon(String blogCategoryIcon) {
-		this.blogCategoryIcon = blogCategoryIcon;
+	public void setCategoryIcon(String categoryIcon) {
+		this.categoryIcon = categoryIcon;
 	}
 
-	public String getBlogCategoryName() {
-		return blogCategoryName;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setBlogCategoryName(String blogCategoryName) {
-		this.blogCategoryName = blogCategoryName;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
-	public Long getBlogViews() {
-		return blogViews;
+	public Long getViews() {
+		return views;
 	}
 
-	public void setBlogViews(Long blogViews) {
-		this.blogViews = blogViews;
+	public void setViews(Long views) {
+		this.views = views;
 	}
 
-	public List<String> getBlogTags() {
-		return blogTags;
+	public List<String> getTags() {
+		return tags;
 	}
 
-	public void setBlogTags(List<String> blogTags) {
-		this.blogTags = blogTags;
+	public void setTags(List<String> tags) {
+		this.tags = tags;
 	}
 
-	public String getBlogContent() {
-		return blogContent;
+	public String getContent() {
+		return content;
 	}
 
-	public void setBlogContent(String blogContent) {
-		this.blogContent = blogContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Integer getCommentCount() {
@@ -122,11 +125,19 @@ public class BlogDetailVO {
 		this.createTime = createTime;
 	}
 
-	public String getBlogCoverImage() {
-		return blogCoverImage;
+	public String getCoverImage() {
+		return coverImage;
 	}
 
-	public void setBlogCoverImage(String blogCoverImage) {
-		this.blogCoverImage = blogCoverImage;
+	public void setCoverImage(String coverImage) {
+		this.coverImage = coverImage;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 }

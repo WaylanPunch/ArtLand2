@@ -1,7 +1,7 @@
 package com.artland.service.impl;
 
-import com.artland.dao.BlogConfigMapper;
-import com.artland.entity.BlogConfig;
+import com.artland.dao.ConfigMapper;
+import com.artland.entity.Config;
 import com.artland.service.ConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class ConfigServiceImpl implements ConfigService {
 	@Autowired
-	private BlogConfigMapper configMapper;
+	private ConfigMapper configMapper;
 
 	public static final String websiteName = "WAYLANPUNCH";
 	public static final String websiteDescription = "WAYLANPUNCH是SpringBoot2+Thymeleaf+Mybatis建造的个人博客网站.SpringBoot实战博客源码.个人博客搭建";
@@ -40,9 +40,9 @@ public class ConfigServiceImpl implements ConfigService {
 
 	@Override
 	public int updateConfig(String configName, String configValue) {
-		BlogConfig blogConfig = configMapper.selectByPrimaryKey(configName);
+		Config blogConfig = configMapper.selectByPrimaryKey(configName);
 		if (blogConfig != null) {
-			blogConfig.setConfigValue(configValue);
+			blogConfig.setValue(configValue);
 			blogConfig.setUpdateTime(new Date());
 			return configMapper.updateByPrimaryKeySelective(blogConfig);
 		}
@@ -52,8 +52,8 @@ public class ConfigServiceImpl implements ConfigService {
 	@Override
 	public Map<String, String> getAllConfigs() {
 		//获取所有的map并封装为map
-		List<BlogConfig> blogConfigs = configMapper.selectAll();
-		Map<String, String> configMap = blogConfigs.stream().collect(Collectors.toMap(BlogConfig::getConfigName, BlogConfig::getConfigValue));
+		List<Config> blogConfigs = configMapper.selectAll();
+		Map<String, String> configMap = blogConfigs.stream().collect(Collectors.toMap(Config::getName, Config::getValue));
 		for (Map.Entry<String, String> config : configMap.entrySet()) {
 			if ("websiteName".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
 				config.setValue(websiteName);

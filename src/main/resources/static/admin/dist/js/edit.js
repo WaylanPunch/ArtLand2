@@ -71,7 +71,7 @@ $(function () {
         },
         onComplete: function (file, r) {
             if (r != null && r.resultCode == 200) {
-                $("#blogCoverImage").attr("src", r.data);
+                $("#blogCoverImage").attr("src", r.data.fileAbsoluteUri);
                 $("#blogCoverImage").attr("style", "width: 128px;height: 128px;display:block;");
                 return false;
             } else {

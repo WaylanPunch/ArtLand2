@@ -1,6 +1,6 @@
 package com.artland.service;
 
-import com.artland.entity.BlogCategory;
+import com.artland.entity.Category;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.PageResult;
 
@@ -20,7 +20,7 @@ public interface CategoryService {
 	 * @param pageUtil
 	 * @return
 	 */
-	PageResult getBlogCategoryPage(PageQueryUtil pageUtil);
+	PageResult getBlogCategoryPage(PageQueryUtil pageUtil,Integer categoryUserId);
 
 	int getTotalCategories();
 
@@ -37,5 +37,5 @@ public interface CategoryService {
 
 	Boolean deleteBatch(Integer[] ids);
 
-	List<BlogCategory> getAllCategories();
+	List<Category> getAllCategories();
 }

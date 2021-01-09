@@ -1,7 +1,7 @@
 package com.artland.service.impl;
 
-import com.artland.dao.BlogCommentMapper;
-import com.artland.entity.BlogComment;
+import com.artland.dao.CommentMapper;
+import com.artland.entity.Comment;
 import com.artland.service.CommentService;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.PageResult;
@@ -23,16 +23,16 @@ import java.util.Map;
 @Service
 public class CommentServiceImpl implements CommentService {
 	@Autowired
-	private BlogCommentMapper blogCommentMapper;
+	private CommentMapper blogCommentMapper;
 
 	@Override
-	public Boolean addComment(BlogComment blogComment) {
+	public Boolean addComment(Comment blogComment) {
 		return blogCommentMapper.insertSelective(blogComment) > 0;
 	}
 
 	@Override
 	public PageResult getCommentsPage(PageQueryUtil pageUtil) {
-		List<BlogComment> comments = blogCommentMapper.findBlogCommentList(pageUtil);
+		List<Comment> comments = blogCommentMapper.findBlogCommentList(pageUtil);
 		int total = blogCommentMapper.getTotalBlogComments(pageUtil);
 		PageResult pageResult = new PageResult(comments, total, pageUtil.getLimit(), pageUtil.getPage());
 		return pageResult;
@@ -55,7 +55,7 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public Boolean reply(Long commentId, String replyBody) {
-		BlogComment blogComment = blogCommentMapper.selectByPrimaryKey(commentId);
+		Comment blogComment = blogCommentMapper.selectByPrimaryKey(commentId);
 		//blogComment不为空且状态为已审核，则继续后续操作
 		if (blogComment != null && blogComment.getCommentStatus().intValue() == 1) {
 			blogComment.setReplyBody(replyBody);
@@ -77,7 +77,7 @@ public class CommentServiceImpl implements CommentService {
 		params.put("blogId", blogId);
 		params.put("commentStatus", 1);//过滤审核通过的数据
 		PageQueryUtil pageUtil = new PageQueryUtil(params);
-		List<BlogComment> comments = blogCommentMapper.findBlogCommentList(pageUtil);
+		List<Comment> comments = blogCommentMapper.findBlogCommentList(pageUtil);
 		if (!CollectionUtils.isEmpty(comments)) {
 			int total = blogCommentMapper.getTotalBlogComments(pageUtil);
 			PageResult pageResult = new PageResult(comments, total, pageUtil.getLimit(), pageUtil.getPage());

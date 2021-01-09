@@ -1,7 +1,7 @@
 package com.artland.service.impl;
 
-import com.artland.dao.BlogLinkMapper;
-import com.artland.entity.BlogLink;
+import com.artland.dao.LinkMapper;
+import com.artland.entity.Link;
 import com.artland.service.LinkService;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.PageResult;
@@ -23,11 +23,11 @@ import java.util.stream.Collectors;
 public class LinkServiceImpl implements LinkService {
 
 	@Autowired
-	private BlogLinkMapper blogLinkMapper;
+	private LinkMapper blogLinkMapper;
 
 	@Override
 	public PageResult getBlogLinkPage(PageQueryUtil pageUtil) {
-		List<BlogLink> links = blogLinkMapper.findLinkList(pageUtil);
+		List<Link> links = blogLinkMapper.findLinkList(pageUtil);
 		int total = blogLinkMapper.getTotalLinks(pageUtil);
 		PageResult pageResult = new PageResult(links, total, pageUtil.getLimit(), pageUtil.getPage());
 		return pageResult;
@@ -39,17 +39,17 @@ public class LinkServiceImpl implements LinkService {
 	}
 
 	@Override
-	public Boolean saveLink(BlogLink link) {
+	public Boolean saveLink(Link link) {
 		return blogLinkMapper.insertSelective(link) > 0;
 	}
 
 	@Override
-	public BlogLink selectById(Integer id) {
+	public Link selectById(Integer id) {
 		return blogLinkMapper.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public Boolean updateLink(BlogLink tempLink) {
+	public Boolean updateLink(Link tempLink) {
 		return blogLinkMapper.updateByPrimaryKeySelective(tempLink) > 0;
 	}
 
@@ -59,12 +59,12 @@ public class LinkServiceImpl implements LinkService {
 	}
 
 	@Override
-	public Map<Byte, List<BlogLink>> getLinksForLinkPage() {
+	public Map<Byte, List<Link>> getLinksForLinkPage() {
 		//获取所有链接数据
-		List<BlogLink> links = blogLinkMapper.findLinkList(null);
+		List<Link> links = blogLinkMapper.findLinkList(null);
 		if (!CollectionUtils.isEmpty(links)) {
 			//根据type进行分组
-			Map<Byte, List<BlogLink>> linksMap = links.stream().collect(Collectors.groupingBy(BlogLink::getLinkType));
+			Map<Byte, List<Link>> linksMap = links.stream().collect(Collectors.groupingBy(Link::getType));
 			return linksMap;
 		}
 		return null;

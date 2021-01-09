@@ -1,8 +1,8 @@
 package com.artland.controller.blog;
 
 import com.artland.controller.vo.BlogDetailVO;
-import com.artland.entity.BlogComment;
-import com.artland.entity.BlogLink;
+import com.artland.entity.Comment;
+import com.artland.entity.Link;
 import com.artland.service.*;
 import com.artland.util.*;
 import org.springframework.stereotype.Controller;
@@ -198,7 +198,7 @@ public class ArtLandController {
 	@GetMapping({"/link"})
 	public String link(HttpServletRequest request) {
 		request.setAttribute("pageName", "友情链接");
-		Map<Byte, List<BlogLink>> linkMap = linkService.getLinksForLinkPage();
+		Map<Byte, List<Link>> linkMap = linkService.getLinksForLinkPage();
 		if (linkMap != null) {
 			//判断友链类别并封装数据 0-友链 1-推荐 2-个人网站
 			if (linkMap.containsKey((byte) 0)) {
@@ -256,7 +256,7 @@ public class ArtLandController {
 		if (commentBody.trim().length() > 200) {
 			return ResultGenerator.genFailResult("评论内容过长");
 		}
-		BlogComment comment = new BlogComment();
+		Comment comment = new Comment();
 		comment.setBlogId(blogId);
 		comment.setCommentator(ArtLandUtils.cleanString(commentator));
 		comment.setEmail(email);

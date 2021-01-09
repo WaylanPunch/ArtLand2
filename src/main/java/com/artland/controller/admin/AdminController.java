@@ -1,6 +1,6 @@
 package com.artland.controller.admin;
 
-import com.artland.entity.AdminUser;
+import com.artland.entity.User;
 import com.artland.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -68,10 +68,10 @@ public class AdminController {
 			session.setAttribute("errorMsg", "验证码错误");
 			return "admin/login";
 		}
-		AdminUser adminUser = adminUserService.login(userName, password);
+		User adminUser = adminUserService.login(userName, password);
 		if (adminUser != null) {
 			session.setAttribute("loginUser", adminUser.getNickName());
-			session.setAttribute("loginUserId", adminUser.getAdminUserId());
+			session.setAttribute("loginUserId", adminUser.getId());
 			//session过期时间设置为7200秒 即两小时
 			//session.setMaxInactiveInterval(60 * 60 * 2);
 			return "redirect:/admin/index";
@@ -84,7 +84,7 @@ public class AdminController {
 	@GetMapping("/profile")
 	public String profile(HttpServletRequest request) {
 		Integer loginUserId = (int) request.getSession().getAttribute("loginUserId");
-		AdminUser adminUser = adminUserService.getUserDetailById(loginUserId);
+		User adminUser = adminUserService.getUserDetailById(loginUserId);
 		if (adminUser == null) {
 			return "admin/login";
 		}

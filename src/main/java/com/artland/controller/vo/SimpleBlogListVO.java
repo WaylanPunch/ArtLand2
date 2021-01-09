@@ -10,23 +10,33 @@ import java.io.Serializable;
  */
 public class SimpleBlogListVO implements Serializable {
 
-	private Long blogId;
+	private Long id;
 
-	private String blogTitle;
+	private String title;
 
-	public Long getBlogId() {
-		return blogId;
+	private Integer userId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setBlogId(Long blogId) {
-		this.blogId = blogId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getBlogTitle() {
-		return blogTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setBlogTitle(String blogTitle) {
-		this.blogTitle = blogTitle;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 }

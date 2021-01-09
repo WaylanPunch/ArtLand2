@@ -112,13 +112,13 @@ public class BlogController {
 			return ResultGenerator.genFailResult("封面图不能为空");
 		}
 		Blog blog = new Blog();
-		blog.setBlogTitle(blogTitle);
-		blog.setBlogSubUrl(blogSubUrl);
-		blog.setBlogCategoryId(blogCategoryId);
-		blog.setBlogTags(blogTags);
-		blog.setBlogContent(blogContent);
-		blog.setBlogCoverImage(blogCoverImage);
-		blog.setBlogStatus(blogStatus);
+		blog.setTitle(blogTitle);
+		blog.setSubUrl(blogSubUrl);
+		blog.setCategoryId(blogCategoryId);
+		blog.setTags(blogTags);
+		blog.setContent(blogContent);
+		blog.setCoverImage(blogCoverImage);
+		blog.setStatus(blogStatus);
 		blog.setEnableComment(enableComment);
 		String saveBlogResult = blogService.saveBlog(blog);
 		if ("success".equals(saveBlogResult)) {
@@ -164,14 +164,14 @@ public class BlogController {
 			return ResultGenerator.genFailResult("封面图不能为空");
 		}
 		Blog blog = new Blog();
-		blog.setBlogId(blogId);
-		blog.setBlogTitle(blogTitle);
-		blog.setBlogSubUrl(blogSubUrl);
-		blog.setBlogCategoryId(blogCategoryId);
-		blog.setBlogTags(blogTags);
-		blog.setBlogContent(blogContent);
-		blog.setBlogCoverImage(blogCoverImage);
-		blog.setBlogStatus(blogStatus);
+		blog.setId(blogId);
+		blog.setTitle(blogTitle);
+		blog.setSubUrl(blogSubUrl);
+		blog.setCategoryId(blogCategoryId);
+		blog.setTags(blogTags);
+		blog.setContent(blogContent);
+		blog.setCoverImage(blogCoverImage);
+		blog.setStatus(blogStatus);
 		blog.setEnableComment(enableComment);
 		String updateBlogResult = blogService.updateBlog(blog);
 		if ("success".equals(updateBlogResult)) {

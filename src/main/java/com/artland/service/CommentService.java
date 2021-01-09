@@ -1,6 +1,6 @@
 package com.artland.service;
 
-import com.artland.entity.BlogComment;
+import com.artland.entity.Comment;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.PageResult;
 
@@ -17,7 +17,7 @@ public interface CommentService {
 	 * @param blogComment
 	 * @return
 	 */
-	Boolean addComment(BlogComment blogComment);
+	Boolean addComment(Comment blogComment);
 
 	/**
 	 * 后台管理系统中评论分页功能

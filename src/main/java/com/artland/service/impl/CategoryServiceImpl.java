@@ -1,8 +1,8 @@
 package com.artland.service.impl;
 
-import com.artland.dao.BlogCategoryMapper;
+import com.artland.dao.CategoryMapper;
 import com.artland.dao.BlogMapper;
-import com.artland.entity.BlogCategory;
+import com.artland.entity.Category;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.PageResult;
 import com.artland.service.CategoryService;
@@ -22,13 +22,13 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
-	private BlogCategoryMapper blogCategoryMapper;
+	private CategoryMapper blogCategoryMapper;
 	@Autowired
 	private BlogMapper blogMapper;
 
 	@Override
-	public PageResult getBlogCategoryPage(PageQueryUtil pageUtil) {
-		List<BlogCategory> categoryList = blogCategoryMapper.findCategoryList(pageUtil);
+	public PageResult getBlogCategoryPage(PageQueryUtil pageUtil,Integer categoryUserId) {
+		List<Category> categoryList = blogCategoryMapper.findCategoryList(pageUtil, categoryUserId);
 		int total = blogCategoryMapper.getTotalCategories(pageUtil);
 		PageResult pageResult = new PageResult(categoryList, total, pageUtil.getLimit(), pageUtil.getPage());
 		return pageResult;
@@ -41,11 +41,11 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Boolean saveCategory(String categoryName, String categoryIcon) {
-		BlogCategory temp = blogCategoryMapper.selectByCategoryName(categoryName);
+		Category temp = blogCategoryMapper.selectByCategoryName(categoryName);
 		if (temp == null) {
-			BlogCategory blogCategory = new BlogCategory();
-			blogCategory.setCategoryName(categoryName);
-			blogCategory.setCategoryIcon(categoryIcon);
+			Category blogCategory = new Category();
+			blogCategory.setName(categoryName);
+			blogCategory.setIcon(categoryIcon);
 			return blogCategoryMapper.insertSelective(blogCategory) > 0;
 		}
 		return false;
@@ -54,12 +54,12 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	@Transactional
 	public Boolean updateCategory(Integer categoryId, String categoryName, String categoryIcon) {
-		BlogCategory blogCategory = blogCategoryMapper.selectByPrimaryKey(categoryId);
+		Category blogCategory = blogCategoryMapper.selectByPrimaryKey(categoryId);
 		if (blogCategory != null) {
-			blogCategory.setCategoryIcon(categoryIcon);
-			blogCategory.setCategoryName(categoryName);
+			blogCategory.setIcon(categoryIcon);
+			blogCategory.setName(categoryName);
 			//修改分类实体
-			blogMapper.updateBlogCategorys(categoryName, blogCategory.getCategoryId(), new Integer[]{categoryId});
+			blogMapper.updateBlogCategorys(categoryName, blogCategory.getId(), new Integer[]{categoryId});
 			return blogCategoryMapper.updateByPrimaryKeySelective(blogCategory) > 0;
 		}
 		return false;
@@ -78,7 +78,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<BlogCategory> getAllCategories() {
+	public List<Category> getAllCategories() {
 		return blogCategoryMapper.findCategoryList(null);
 	}
 

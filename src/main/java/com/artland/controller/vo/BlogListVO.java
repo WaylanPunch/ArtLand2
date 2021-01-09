@@ -13,77 +13,79 @@ import java.util.Date;
  */
 public class BlogListVO implements Serializable {
 
-	private Long blogId;
+	private Long id;
 
-	private String blogTitle;
+	private String title;
 
-	private String blogSubUrl;
+	private String subUrl;
 
-	private String blogCoverImage;
+	private String coverImage;
 
-	private Integer blogCategoryId;
+	private Integer categoryId;
 
-	private String blogCategoryIcon;
+	private String categoryIcon;
 
-	private String blogCategoryName;
+	private String categoryName;
 
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	private Date createTime;
 
-	public Long getBlogId() {
-		return blogId;
+	private Integer userId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setBlogId(Long blogId) {
-		this.blogId = blogId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getBlogTitle() {
-		return blogTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setBlogTitle(String blogTitle) {
-		this.blogTitle = blogTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getBlogSubUrl() {
-		return blogSubUrl;
+	public String getSubUrl() {
+		return subUrl;
 	}
 
-	public void setBlogSubUrl(String blogSubUrl) {
-		this.blogSubUrl = blogSubUrl;
+	public void setSubUrl(String subUrl) {
+		this.subUrl = subUrl;
 	}
 
-	public String getBlogCoverImage() {
-		return blogCoverImage;
+	public String getCoverImage() {
+		return coverImage;
 	}
 
-	public void setBlogCoverImage(String blogCoverImage) {
-		this.blogCoverImage = blogCoverImage;
+	public void setCoverImage(String coverImage) {
+		this.coverImage = coverImage;
 	}
 
-	public Integer getBlogCategoryId() {
-		return blogCategoryId;
+	public Integer getCategoryId() {
+		return categoryId;
 	}
 
-	public void setBlogCategoryId(Integer blogCategoryId) {
-		this.blogCategoryId = blogCategoryId;
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
-	public String getBlogCategoryName() {
-		return blogCategoryName;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setBlogCategoryName(String blogCategoryName) {
-		this.blogCategoryName = blogCategoryName;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
-	public String getBlogCategoryIcon() {
-		return blogCategoryIcon;
+	public String getCategoryIcon() {
+		return categoryIcon;
 	}
 
-	public void setBlogCategoryIcon(String blogCategoryIcon) {
-		this.blogCategoryIcon = blogCategoryIcon;
+	public void setCategoryIcon(String categoryIcon) {
+		this.categoryIcon = categoryIcon;
 	}
 
 	public Date getCreateTime() {
@@ -92,5 +94,13 @@ public class BlogListVO implements Serializable {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 }

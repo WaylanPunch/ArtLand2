@@ -2,9 +2,11 @@ package com.artland.controller.admin;
 
 import com.artland.config.Constants;
 
+import com.artland.service.CategoryService;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.Result;
 import com.artland.util.ResultGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -33,10 +35,16 @@ import java.util.Random;
 @RequestMapping("/admin")
 public class MediaController {
 
+	@Autowired
+	private MediaService mediaService;
+
+	@Autowired
+	private CategoryService categoryService;
+
 	@GetMapping("/medias/transfer")
 	public String edit(HttpServletRequest request) {
 		request.setAttribute("path", "transfer");
-		//request.setAttribute("categories", categoryService.getAllCategories());
+		request.setAttribute("categories", categoryService.getAllCategories());
 		return "admin/transfer";
 	}
 

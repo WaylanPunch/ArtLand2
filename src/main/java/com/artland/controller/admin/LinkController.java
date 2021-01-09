@@ -1,6 +1,6 @@
 package com.artland.controller.admin;
 
-import com.artland.entity.BlogLink;
+import com.artland.entity.Link;
 import com.artland.service.LinkService;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.Result;
@@ -55,12 +55,12 @@ public class LinkController {
 		if (linkType == null || linkType < 0 || linkRank == null || linkRank < 0 || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkUrl) || StringUtils.isEmpty(linkDescription)) {
 			return ResultGenerator.genFailResult("参数异常！");
 		}
-		BlogLink link = new BlogLink();
-		link.setLinkType(linkType.byteValue());
-		link.setLinkRank(linkRank);
-		link.setLinkName(linkName);
-		link.setLinkUrl(linkUrl);
-		link.setLinkDescription(linkDescription);
+		Link link = new Link();
+		link.setType(linkType.byteValue());
+		link.setRank(linkRank);
+		link.setName(linkName);
+		link.setUrl(linkUrl);
+		link.setDescription(linkDescription);
 		return ResultGenerator.genSuccessResult(linkService.saveLink(link));
 	}
 
@@ -70,7 +70,7 @@ public class LinkController {
 	@GetMapping("/links/info/{id}")
 	@ResponseBody
 	public Result info(@PathVariable("id") Integer id) {
-		BlogLink link = linkService.selectById(id);
+		Link link = linkService.selectById(id);
 		return ResultGenerator.genSuccessResult(link);
 	}
 
@@ -85,18 +85,18 @@ public class LinkController {
 						 @RequestParam("linkUrl") String linkUrl,
 						 @RequestParam("linkRank") Integer linkRank,
 						 @RequestParam("linkDescription") String linkDescription) {
-		BlogLink tempLink = linkService.selectById(linkId);
+		Link tempLink = linkService.selectById(linkId);
 		if (tempLink == null) {
 			return ResultGenerator.genFailResult("无数据！");
 		}
 		if (linkType == null || linkType < 0 || linkRank == null || linkRank < 0 || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkUrl) || StringUtils.isEmpty(linkDescription)) {
 			return ResultGenerator.genFailResult("参数异常！");
 		}
-		tempLink.setLinkType(linkType.byteValue());
-		tempLink.setLinkRank(linkRank);
-		tempLink.setLinkName(linkName);
-		tempLink.setLinkUrl(linkUrl);
-		tempLink.setLinkDescription(linkDescription);
+		tempLink.setType(linkType.byteValue());
+		tempLink.setRank(linkRank);
+		tempLink.setName(linkName);
+		tempLink.setUrl(linkUrl);
+		tempLink.setDescription(linkDescription);
 		return ResultGenerator.genSuccessResult(linkService.updateLink(tempLink));
 	}
 

@@ -1,6 +1,6 @@
 package com.artland.service;
 
-import com.artland.entity.BlogLink;
+import com.artland.entity.Link;
 import com.artland.util.PageQueryUtil;
 import com.artland.util.PageResult;
 
@@ -24,11 +24,11 @@ public interface LinkService {
 
 	int getTotalLinks();
 
-	Boolean saveLink(BlogLink link);
+	Boolean saveLink(Link link);
 
-	BlogLink selectById(Integer id);
+	Link selectById(Integer id);
 
-	Boolean updateLink(BlogLink tempLink);
+	Boolean updateLink(Link tempLink);
 
 	Boolean deleteBatch(Integer[] ids);
 
@@ -37,5 +37,5 @@ public interface LinkService {
 	 *
 	 * @return
 	 */
-	Map<Byte, List<BlogLink>> getLinksForLinkPage();
+	Map<Byte, List<Link>> getLinksForLinkPage();
 }
